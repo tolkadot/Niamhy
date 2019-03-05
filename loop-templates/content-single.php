@@ -67,6 +67,15 @@ $images = array_filter($images);
           <?php if(get_field('company')) { ?>
           <p class="d-flex"><span class="w-50 detail-header">Production</span> <span class="w-50  color-highlight"><?php the_field('company') ?></span></p>
           <?php } ?>
+
+          <?php if(get_field('designer')) { ?>
+          <p class="d-flex"><span class="w-50 detail-header">Designer</span> <span class="w-50  color-highlight"><?php the_field('designer') ?></span></p>
+          <?php } ?>
+
+          <?php if(get_field('photographer')) { ?>
+          <p class="d-flex"><span class="w-50 detail-header">Photographer</span> <span class="w-50  color-highlight"><?php the_field('photographer') ?></span></p>
+          <?php } ?>
+
         </div>
         </div>
       </div>
