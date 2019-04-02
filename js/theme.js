@@ -10059,31 +10059,11 @@
 }));
 
 jQuery( document ).ready( function( $ ) {
-console.log("loaded");
-console.log();
-	$('#filter').submit(function(){
-		var filter = $('#filter');
-    console.log(filter);
-		$.ajax({
-			url:filter.attr('action'),
-			data:filter.serialize(), // form data
-			type:filter.attr('method'), // POST
-			beforeSend:function(xhr){
-				filter.find('button').text('Processing...'); // changing the button label
-			},
-			success:function(data){
-				filter.find('button').text('Apply filter'); // changing the button label back
-				$('#response').html(data); // insert data
-			}
-		});
-		return false;
-	});
 
+$(".portfolio-item-container img").fadeIn(2000);
 
 	$('ul#portfolio-filter li').on("click", function(){
       var cat = $(this).data("catid");
-      console.log(cat);
-
       $.ajax({
         type: 'POST',
         url: '/wp-admin/admin-ajax.php',
@@ -10092,8 +10072,9 @@ console.log();
             'action':  'fetch_posts' //this is the name of the AJAX method called in WordPress
         }, success: function (result) {
            $('#portfolio-content').html(result);
+           console.log("hello");
+          $(".portfolio-item-container img").fadeIn(2000);
         }
-
     });
   });
 

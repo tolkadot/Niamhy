@@ -50,7 +50,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <?php wp_footer(); ?>
 <script>
 jQuery( document ).ready( function( $ ) {
-$("img").fadeIn(3000);
+
 });
 </script>
 </body>
