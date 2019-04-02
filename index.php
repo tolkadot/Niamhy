@@ -31,7 +31,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 		<div class="row">
 
 			<!-- Do the left sidebar check and opens the primary div -->
-		<div class="content-area col-md p-0" id="primary">
+		<div class="content-area col-md p-0" id="primary" style="min-height: 100VH;>
 
 			<main class="site-main" id="main">
 <div class="col-sm-12">

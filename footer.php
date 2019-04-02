@@ -48,7 +48,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 </div><!-- #page we need this extra closing tag here -->
 
 <?php wp_footer(); ?>
-
+<script>
+jQuery( document ).ready( function( $ ) {
+$("img").fadeIn(3000);
+});
+</script>
 </body>
 
 </html>
