@@ -25,64 +25,41 @@ $container = get_theme_mod( 'understrap_container_type' );
 <?php endif; ?>
 
 <div class="wrapper" id="index-wrapper">
-
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+    <div class="row">
+      <div class="content-area col-md p-0" id="primary" style="min-height: 100VH;">
+        <main class="site-main" id="main">
+          <div class="col-sm-12">
+              <ul id="portfolio-filter" class="portfolio-filter d-flex flex-column flex-md-row  justify-content-around align-items-center mb-5">
+                    <?php if( $terms = get_terms( array(
+                        'taxonomy' => 'category', // to make it simple I use default categories
+                        'orderby' => 'name'
+                    ) ) ) :
+                      // if categories exist, display the dropdown
+                    foreach ( $terms as $term ) :
+                          echo '<li data-catid="'. $term->term_id .'" id="'. $term->term_id .'">' . $term->name . ' </li>';
+                    endforeach;
+                    endif; ?>
+              </ul>
+          </div>
 
-		<div class="row">
-
-			<!-- Do the left sidebar check and opens the primary div -->
-		<div class="content-area col-md p-0" id="primary" style="min-height: 100VH;>
-
-			<main class="site-main" id="main">
-<div class="col-sm-12">
-    <ul id="portfolio-filter" class="portfolio-filter d-flex flex-column flex-md-row  justify-content-around align-items-center mb-5">
-      <?php if( $terms = get_terms( array(
-          'taxonomy' => 'category', // to make it simple I use default categories
-          'orderby' => 'name'
-      ) ) ) :
-        // if categories exist, display the dropdown
-      foreach ( $terms as $term ) :
-            echo '<li data-catid="'. $term->term_id .'" id="'. $term->term_id .'">' . $term->name . ' </li>';
-      endforeach;
-      endif; ?>
-    </ul>
-</div>
-
-				<?php if ( have_posts() ) : ?>
-
-<div class="portfolio-content">
-  <div class="container">
-    <div class="row" id="portfolio-content">
-
-				 <?php while ( have_posts() ) : the_post(); ?>
-
-						<?php
-						get_template_part( 'loop-templates/content', 'portfolio' );
-						?>
-
-				<?php endwhile; ?>
-
-    </div>
-</div>
-
-				<?php else : ?>
-
-					<?php get_template_part( 'loop-templates/content', 'none' ); ?>
-
-				<?php endif; ?>
-
-			</main><!-- #main -->
-
-			<!-- The pagination component -->
-			<?php understrap_pagination(); ?>
-
-			<!-- Do the right sidebar check -->
-			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
-
+        			<?php if ( have_posts() ) : ?>
+          <div class="portfolio-content">
+            <div class="container">
+              <div class="row" id="portfolio-content">
+              	<?php while ( have_posts() ) : the_post(); ?>
+              			<?php	get_template_part( 'loop-templates/content', 'portfolio' ); ?>
+              	<?php endwhile; ?>
+              </div>
+            </div>
+        				<?php else : ?>
+        					<?php get_template_part( 'loop-templates/content', 'none' ); ?>
+        				<?php endif; ?>
+          </div>
+        </main><!-- #main -->
+      </div><!-- content area -->
 		</div><!-- .row -->
-
 	</div><!-- #content -->
-
 </div><!-- #index-wrapper -->
 
 <?php get_footer(); ?>
