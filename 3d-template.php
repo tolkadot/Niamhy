@@ -45,7 +45,28 @@ $phone = get_field('phone', 43);
             <?php the_widget( 'socials_widget', 'instagram=https://www.instagram.com/niamhbuckleycostume/&imdb=https://www.imdb.com/name/nm2287746/', 'before_title=<h3>&after_title=</h3>' ); ?>
           </div>
         <div class="col-md-6">
-          <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+<div class="slider showcase-slider">
+      <?php if( have_rows('images') ): ?>
+      <div class="slider-for">
+        <?php  while ( have_rows('images') ) : the_row(); ?>
+          <?php  $image = get_sub_field('image');
+              if( !empty($image) ): ?>
+                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+              <?php endif; ?>
+        <?php  endwhile; ?>
+      </div>
+      <?php endif; ?>
+    <?php if( have_rows('images') ): ?>
+    <div class="slider-nav">
+      <?php  while ( have_rows('images') ) : the_row(); ?>
+        <?php  $image = get_sub_field('image');
+            if( !empty($image) ): ?>
+              <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" />
+            <?php endif; ?>
+      <?php  endwhile; ?>
+    </div>
+    <?php endif; ?>
+      </div>
         </div>
       </div>
     </div>
